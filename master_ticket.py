@@ -1,11 +1,15 @@
 TICKET_PRICE = 10
+SERVICE_CHARGE = 2
 
 tickets_remaining = 100
+
+def calculate_price(num_tickets):
+        return (num_tickets * TICKET_PRICE) + SERVICE_CHARGE
 
 while tickets_remaining > 0:
     name = str(input('Hello, welcome to MasterTicket! What is your name?\n'))
 
-    print('Hello there, {}! Currently, there are {} tickets remaining. Each ticket is $10.'.format(name, tickets_remaining))
+    print('Hello there, {}! Currently, there are {} tickets remaining. Each ticket is ${}.'.format(name, tickets_remaining, TICKET_PRICE))
  
     try:
         how_many_tickets = int(input('How many tickets would you like to purchase?\n'))
@@ -14,7 +18,8 @@ while tickets_remaining > 0:
     except ValueError as err:
         print("Sorry, we've encountered an error. {} Please try again.".format(err))
     else:
-        answer = input("Okay, {}...that will be ${}. Would you like to continue? Type 'Y' or 'N'...\n".format(name, how_many_tickets*TICKET_PRICE)).lower()
+        
+        answer = input("Okay, {}...that will be ${}. Would you like to continue? Type 'Y' or 'N'...\n".format(name, calculate_price(how_many_tickets))).lower()
 
         if answer == 'y':
             print('Great! I will send over those tickets to you very soon! Thanks, {}.'.format(name))
