@@ -17,8 +17,7 @@ while tickets_remaining > 0:
             raise ValueError("Unfortunately, we don't have that many tickets available at this time.")            
     except ValueError as err:
         print("Sorry, we've encountered an error. {} Please try again.".format(err))
-    else:
-        
+    else:        
         answer = input("Okay, {}...that will be ${}. Would you like to continue? Type 'Y' or 'N'...\n".format(name, calculate_price(how_many_tickets))).lower()
 
         if answer == 'y':
