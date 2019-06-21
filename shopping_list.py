@@ -6,9 +6,24 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def add_to_list(item):
-    shopping_list.append(item)
     print_list()
-    print('{} has been added. You now have {} items on your shopping list...'.format(shopping_list[-1], len(shopping_list)))
+    if len(shopping_list):
+        position = input('Where should I add {}?\n'
+                         'Press ENTER to add to the end of the list.\n'
+                         '> '.format(item))
+    else:
+        position = 0
+    
+    try: 
+        position = abs(int(position))
+    except ValueError:
+        position = None
+    if position is not None:
+        shopping_list.insert(position-1, item)
+    else:
+        shopping_list.append(item)
+    print_list()
+    print('{} has been added. You now have {} items on your shopping list...'.format(item, len(shopping_list)))
     
 
 def show_help():
@@ -23,8 +38,10 @@ def show_help():
 def print_list():
     clear_screen()
     print('=====Shopping List=====')
+    index = 1
     for item in shopping_list:
-        print('*', item)
+        print('{}. {}'.format(index, item))
+        index += 1
     print('=======================')
 
 show_help()
