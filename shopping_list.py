@@ -32,6 +32,7 @@ def show_help():
     print('''
     If you need help, type "Help". 
     If you would like to see what is on your list, type "List".
+    If you would like to delete an item from your list, type "Remove".
     If you are done, type "Done".
     ''')
 
@@ -44,6 +45,15 @@ def print_list():
         index += 1
     print('=======================')
 
+def remove_item():
+    print_list()        
+    item_to_remove = input('Which item would you like to remove?\n> ')
+    try:
+        shopping_list.remove(item_to_remove)
+    except ValueError:
+        pass
+    print_list()
+
 show_help()
 while True: 
     new_item = input('> ').title()
@@ -54,6 +64,8 @@ while True:
     elif new_item == 'List':
         print_list()
         continue
+    elif new_item == 'Remove':
+        remove_item()
     elif new_item == 'Help':
         show_help()
         continue
