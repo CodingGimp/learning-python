@@ -1,10 +1,18 @@
+import os
+
 shopping_list = []
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def add_to_list(item):
     shopping_list.append(item)
+    print_list()
     print('{} has been added. You now have {} items on your shopping list...'.format(shopping_list[-1], len(shopping_list)))
+    
 
 def show_help():
+    clear_screen()
     print('What item would you like to add to your shopping list?')
     print('''
     If you need help, type "Help". 
@@ -13,6 +21,7 @@ def show_help():
     ''')
 
 def print_list():
+    clear_screen()
     print('=====Shopping List=====')
     for item in shopping_list:
         print('*', item)
