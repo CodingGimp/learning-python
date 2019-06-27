@@ -1,7 +1,13 @@
+import random 
+
 class Thief:
     sneaky = True
 
+    def pickpocket(self):
+        if self.sneaky:
+            return bool(random.randint(0, 1))
+        return False
 
-gimp = Thief()
-print(gimp.sneaky)
-print(Thief.sneaky)
+Gimp = Thief()       
+
+print(Gimp.pickpocket())
