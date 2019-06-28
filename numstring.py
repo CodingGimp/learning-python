@@ -11,5 +11,8 @@ class NumString:
     def __float__(self):
         return float(self.value)
 
+    def __add__(self, other):
+        return self.value + str(other)
+
 five_hundred = NumString(500)
-print(float(five_hundred))
+print(five_hundred+4)
